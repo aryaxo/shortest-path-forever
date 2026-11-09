@@ -208,6 +208,21 @@ for _, pair in ipairs({ { 26, 39 }, { 26, 67 }, { 25, 22 }, { 6, 7 } }) do
 end
 print("baked endpoint bounds: four journeys, both water modes, exact full-search costs: ok")
 
+ns.faction, ns.water, ns.speed, ns.known = "Horde", false, 7, {}
+local undercity, sepulcher = ns.TaxiNodes[11], ns.TaxiNodes[10]
+driver.begin(
+	{ map = 0, x = undercity.x, y = undercity.y, z = undercity.z },
+	{ map = 0, x = sepulcher.x + 30, y = sepulcher.y }
+)
+drain()
+local noted = false
+for _, row in ipairs((select(2, ns.JourneyInfo()))) do
+	noted = noted or row.key == "unknown-flight-path"
+end
+assert(noted, "a walk kept as the same journey still says a flight point would shorten it")
+ns.ClearJourney()
+print("unknown flight: a kept walk keeps the proof that a flight would be quicker: ok")
+
 -- The Deeprun Tram's instance has no world map, so a step there cannot fall back to a zone name.
 local locate = ns.Locate
 driver.env.UNKNOWN = "Unknown"

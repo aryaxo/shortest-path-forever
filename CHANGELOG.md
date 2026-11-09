@@ -12,6 +12,7 @@ optional `### For addon authors` subsection after a version's player bullets.
 
 ## [Unreleased]
 
+- **The note that an undiscovered flight point would shorten a walk shows every time.** When a journey proved the walk it was already showing, it kept the walk without the finding that a flight would be quicker, so the grey note under the journey appeared on only some walks. It now shows on every walk it applies to (#539).
 
 ## [1.24.0] - 2026-11-09
 
