@@ -338,7 +338,7 @@ FinishSearch = function()
 	if keep then
 		followed.provisional = nil
 		if same then
-			followed.unknownFlight = planned.unknownFlight
+			followed.unknownFlight, followed.unknownFlightMaps = planned.unknownFlight, planned.unknownFlightMaps
 		end
 		Retime(same and planned or estimate)
 		local changedWater = followed.waterMode ~= waterMode
